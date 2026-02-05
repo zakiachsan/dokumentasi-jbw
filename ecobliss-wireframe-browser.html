@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ECOBLISS PO SYSTEM - Wireframe</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #e5e7eb;
+            color: #333;
+            line-height: 1.4;
+        }
+        
+        .page {
+            width: 297mm;
+            height: 210mm;
+            padding: 8mm;
+            margin: 0 auto;
+            background: #e5e7eb;
+            page-break-after: always;
+            page-break-inside: avoid;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Browser Frame */
+        .browser-frame {
+            background: white;
+            border: 2px solid #9ca3af;
+            border-radius: 8px;
+            height: calc(100% - 16mm);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+        }
+        
+        /* Browser Chrome */
+        .browser-chrome {
+            background: #f3f4f6;
+            border-bottom: 1px solid #d1d5db;
+            padding: 6px 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .browser-dots {
+            display: flex;
+            gap: 4px;
+        }
+        
+        .browser-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        
+        .browser-dot.red { background: #ef4444; }
+        .browser-dot.yellow { background: #f59e0b; }
+        .browser-dot.green { background: #10b981; }
+        
+        .browser-address {
+            flex: 1;
+            background: white;
+            border: 1px solid #d1d5db;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 11px;
+            color: #6b7280;
+        }
+        
+        /* Browser Content */
+        .browser-content {
+            flex: 1;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Header */
+        .app-header {
+            background: #1e3a5f;
+            color: white;
+            padding: 8px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .app-title {
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .app-user {
+            font-size: 10px;
+            opacity: 0.8;
+        }
+        
+        /* Navigation */
+        .app-nav {
+            background: #2c5282;
+            padding: 6px 16px;
+            display: flex;
+            gap: 2px;
+        }
+        
+        .nav-item {
+            padding: 5px 12px;
+            color: rgba(255,255,255,0.7);
+            font-size: 10px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .nav-item.active {
+            background: rgba(255,255,255,0.2);
+            color: white;
+        }
+        
+        /* Main Content Area */
+        .main-content {
+            flex: 1;
+            padding: 12px 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        /* Page Title inside browser */
+        .page-heading {
+            font-size: 14px;
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-bottom: 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e5e7eb;
+        }
+        
+        /* Cards */
+        .cards-row {
+            display: flex;
+            flex-direction: row;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .cards-row .metric-card {
+            flex: 1;
+            min-width: 0;
+        }
+        
+        .metric-card {
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        .metric-value {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .metric-label {
+            font-size: 10px;
+            color: #6b7280;
+            margin-top: 2px;
+        }
+        
+        .metric-card.warning .metric-value {
+            color: #dc2626;
+        }
+        
+        /* Panels */
+        .panel {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+        
+        .panel-header {
+            background: #f3f4f6;
+            padding: 6px 12px;
+            font-weight: 600;
+            font-size: 11px;
+            color: #374151;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .panel-body {
+            padding: 8px 12px;
+        }
+        
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 9px;
+        }
+        
+        .data-table th {
+            background: #f9fafb;
+            padding: 5px 6px;
+            text-align: left;
+            font-weight: 600;
+            color: #4b5563;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .data-table td {
+            padding: 4px 6px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 2px 6px;
+            border-radius: 10px;
+            font-size: 8px;
+            font-weight: 500;
+        }
+        
+        .badge-open { background: #dbeafe; color: #1d4ed8; }
+        .badge-partial { background: #fef3c7; color: #92400e; }
+        .badge-closed { background: #d1fae5; color: #047857; }
+        .badge-warning { background: #fee2e2; color: #dc2626; }
+        .badge-delivered { background: #d1fae5; color: #047857; }
+        
+        /* Progress */
+        .progress-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: #10b981;
+            border-radius: 3px;
+        }
+        
+        /* Buttons */
+        .btn {
+            padding: 3px 8px;
+            border: none;
+            border-radius: 3px;
+            font-size: 9px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+        
+        .btn-primary { background: #2563eb; color: white; }
+        .btn-success { background: #10b981; color: white; }
+        .btn-secondary { background: #e5e7eb; color: #374151; border: 1px solid #d1d5db; }
+        .btn-sm { padding: 2px 6px; font-size: 8px; }
+        
+        /* Filters */
+        .filter-bar {
+            display: flex;
+            gap: 6px;
+            padding: 8px 12px;
+            background: #f9fafb;
+            border-bottom: 1px solid #e5e7eb;
+            align-items: center;
+        }
+        
+        .filter-input {
+            padding: 3px 6px;
+            border: 1px solid #d1d5db;
+            border-radius: 3px;
+            font-size: 9px;
+        }
+        
+        /* Two Columns */
+        .two-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+        
+        /* Detail Grid */
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 8px;
+        }
+        
+        .detail-item {
+            background: #f9fafb;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #e5e7eb;
+        }
+        
+        .detail-label {
+            font-size: 8px;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin-bottom: 1px;
+        }
+        
+        .detail-value {
+            font-size: 11px;
+            font-weight: 600;
+            color: #111827;
+        }
+        
+        /* Steps */
+        .steps-container {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+        
+        .step-item {
+            flex: 1;
+            padding: 10px;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .step-item.active {
+            background: #2563eb;
+            border-color: #2563eb;
+            color: white;
+        }
+        
+        .step-number {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 2px;
+        }
+        
+        .step-label {
+            font-size: 9px;
+        }
+        
+        /* Upload */
+        .upload-box {
+            border: 1px dashed #d1d5db;
+            border-radius: 6px;
+            padding: 15px;
+            text-align: center;
+            background: #f9fafb;
+        }
+        
+        /* Alert */
+        .alert {
+            padding: 6px 10px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 9px;
+        }
+        
+        .alert-success { background: #d1fae5; color: #047857; }
+        .alert-warning { background: #fef3c7; color: #92400e; }
+        
+        /* Footer */
+        .page-footer {
+            background: #f9fafb;
+            border-top: 1px solid #e5e7eb;
+            padding: 6px 16px;
+            font-size: 8px;
+            color: #6b7280;
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        /* Text helpers */
+        .text-xs { font-size: 8px; }
+        .text-sm { font-size: 9px; }
+        .mb-1 { margin-bottom: 4px; }
+        .mb-2 { margin-bottom: 6px; }
+        
+        /* Compact table */
+        .compact-table td, .compact-table th {
+            padding: 3px 5px;
+        }
+    </style>
+</head>
+<body>
+
+<!-- PAGE 1: DASHBOARD -->
+<div class="page">
+    <div class="browser-frame">
+        <!-- Browser Chrome -->
+        <div class="browser-chrome">
+            <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+            </div>
+            <div class="browser-address">https://ecobliss.posystem.com/dashboard</div>
+        </div>
+        
+        <!-- App Header -->
+        <div class="app-header">
+            <div class="app-title">ECOBLISS PO SYSTEM</div>
+            <div class="app-user">Admin | ANDRY</div>
+        </div>
+        
+        <!-- Navigation -->
+        <div class="app-nav">
+            <div class="nav-item active">Dashboard</div>
+            <div class="nav-item">Purchase Order</div>
+            <div class="nav-item">Pengiriman</div>
+            <div class="nav-item">Forecast</div>
+            <div class="nav-item">Logistik</div>
+            <div class="nav-item">Kontrak</div>
+            <div class="nav-item">Import Data</div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="page-heading">DASHBOARD UTAMA</div>
+            
+            <!-- Metrics -->
+            <div class="cards-row">
+                <div class="metric-card">
+                    <div class="metric-value">24</div>
+                    <div class="metric-label">PO Aktif</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">8</div>
+                    <div class="metric-label">Dalam Pengiriman</div>
+                </div>
+                <div class="metric-card warning">
+                    <div class="metric-value">3</div>
+                    <div class="metric-label">PO Terlambat</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-value">156K</div>
+                    <div class="metric-label">Qty Pending</div>
+                </div>
+            </div>
+            
+            <div class="two-columns" style="flex: 1; min-height: 0;">
+                <!-- PO per Customer -->
+                <div class="panel" style="display: flex; flex-direction: column;">
+                    <div class="panel-header">PO per Customer (Bulan Ini)</div>
+                    <div class="panel-body" style="flex: 1; overflow: hidden;">
+                        <table class="data-table compact-table">
+                            <thead>
+                                <tr>
+                                    <th>Customer</th>
+                                    <th>PO</th>
+                                    <th>Qty</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>SCJ</td>
+                                    <td>5</td>
+                                    <td>45,000</td>
+                                    <td><span class="badge badge-open">Open</span></td>
+                                </tr>
+                                <tr>
+                                    <td>IndoPaket</td>
+                                    <td>12</td>
+                                    <td>89,000</td>
+                                    <td><span class="badge badge-partial">Partial</span></td>
+                                </tr>
+                                <tr>
+                                    <td>Indomaret</td>
+                                    <td>7</td>
+                                    <td>22,000</td>
+                                    <td><span class="badge badge-closed">Closed</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Forecast -->
+                <div class="panel" style="display: flex; flex-direction: column;">
+                    <div class="panel-header">Forecast vs Realisasi (Feb 2026)</div>
+                    <div class="panel-body">
+                        <div class="mb-2">
+                            <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                                <span>SCJ</span>
+                                <span style="font-weight: bold;">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 90%;"></div>
+                            </div>
+                            <div class="text-xs" style="color: #6b7280;">Target: 50,000 / Masuk: 45,000</div>
+                        </div>
+                        <div>
+                            <div style="display: flex; justify-content: space-between; font-size: 10px;">
+                                <span>IndoPaket</span>
+                                <span style="font-weight: bold;">89%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 89%;"></div>
+                            </div>
+                            <div class="text-xs" style="color: #6b7280;">Target: 100,000 / Masuk: 89,000</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Warning List -->
+            <div class="panel" style="margin-bottom: 0;">
+                <div class="panel-header">PO yang Perlu Perhatian</div>
+                <div class="panel-body" style="padding: 6px 12px;">
+                    <table class="data-table compact-table">
+                        <thead>
+                            <tr>
+                                <th>PO Number</th>
+                                <th>Customer</th>
+                                <th>Due Date</th>
+                                <th>Sisa Qty</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PO-2026-INT-SCJ-00011</td>
+                                <td>SCJ</td>
+                                <td>25-Jan-26</td>
+                                <td>5,000</td>
+                                <td><span class="badge badge-warning">3 hari lagi</span></td>
+                            </tr>
+                            <tr>
+                                <td>03G030/2024900/01/2026</td>
+                                <td>IndoPaket</td>
+                                <td>20-Jan-26</td>
+                                <td>12,000</td>
+                                <td><span class="badge badge-warning">Terlambat</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Last sync: 02-Feb-2026 14:30</span>
+            <span>Page 1 of 5</span>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 2: PO LIST -->
+<div class="page">
+    <div class="browser-frame">
+        <div class="browser-chrome">
+            <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+            </div>
+            <div class="browser-address">https://ecobliss.posystem.com/purchase-orders</div>
+        </div>
+        
+        <div class="app-header">
+            <div class="app-title">ECOBLISS PO SYSTEM</div>
+            <div class="app-user">Admin | ANDRY</div>
+        </div>
+        
+        <div class="app-nav">
+            <div class="nav-item">Dashboard</div>
+            <div class="nav-item active">Purchase Order</div>
+            <div class="nav-item">Pengiriman</div>
+            <div class="nav-item">Forecast</div>
+            <div class="nav-item">Logistik</div>
+            <div class="nav-item">Kontrak</div>
+            <div class="nav-item">Import Data</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="page-heading">PURCHASE ORDER - LIST & INPUT</div>
+            
+            <!-- Filter Bar -->
+            <div class="panel" style="margin-bottom: 8px;">
+                <div class="filter-bar">
+                    <input type="text" class="filter-input" placeholder="Cari PO Number..." style="width: 130px;">
+                    <select class="filter-input">
+                        <option>Semua Customer</option>
+                    </select>
+                    <select class="filter-input">
+                        <option>Semua Status</option>
+                    </select>
+                    <button class="btn btn-primary">Cari</button>
+                    <div style="margin-left: auto; display: flex; gap: 5px;">
+                        <button class="btn btn-success">+ Tambah PO</button>
+                        <button class="btn btn-secondary">Import Excel</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- PO Table -->
+            <div class="panel" style="flex: 1; display: flex; flex-direction: column; margin-bottom: 0;">
+                <div class="panel-body" style="flex: 1; overflow: hidden;">
+                    <table class="data-table compact-table">
+                        <thead>
+                            <tr>
+                                <th>PO Number</th>
+                                <th>Customer</th>
+                                <th>Tgl PO</th>
+                                <th>Due Date</th>
+                                <th>Total Qty</th>
+                                <th>Sisa Qty</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>PO-2026-INT-SCJ-00011</td>
+                                <td>SCJ</td>
+                                <td>14-Jan-26</td>
+                                <td>25-Jan-26</td>
+                                <td>10,000</td>
+                                <td>5,000</td>
+                                <td><span class="badge badge-partial">Partial</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Detail</button>
+                                    <button class="btn btn-sm btn-secondary">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>03G030/2024900/01/2026</td>
+                                <td>IndoPaket</td>
+                                <td>15-Jan-26</td>
+                                <td>20-Jan-26</td>
+                                <td>25,000</td>
+                                <td>13,000</td>
+                                <td><span class="badge badge-partial">Partial</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Detail</button>
+                                    <button class="btn btn-sm btn-secondary">Edit</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>PO-2026-EXT-ICBMN-00002</td>
+                                <td>Indomaret</td>
+                                <td>10-Jan-26</td>
+                                <td>18-Jan-26</td>
+                                <td>5,000</td>
+                                <td>0</td>
+                                <td><span class="badge badge-closed">Closed</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Detail</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>11/INT/UPA/I/2026</td>
+                                <td>UPA</td>
+                                <td>01-Jan-26</td>
+                                <td>15-Feb-26</td>
+                                <td>50,000</td>
+                                <td>50,000</td>
+                                <td><span class="badge badge-open">Open</span></td>
+                                <td>
+                                    <button class="btn btn-sm btn-primary">Detail</button>
+                                    <button class="btn btn-sm btn-secondary">Edit</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 8px 12px; border-top: 1px solid #e5e7eb;">
+                    <span class="text-xs" style="color: #6b7280;">Showing 1-4 of 24 PO</span>
+                    <div style="display: flex; gap: 2px;">
+                        <button class="btn btn-sm btn-secondary">&lt;</button>
+                        <button class="btn btn-sm btn-primary">1</button>
+                        <button class="btn btn-sm btn-secondary">2</button>
+                        <button class="btn btn-sm btn-secondary">3</button>
+                        <span class="text-xs" style="padding: 2px 4px;">...</span>
+                        <button class="btn btn-sm btn-secondary">&gt;</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Last sync: 02-Feb-2026 14:30</span>
+            <span>Page 2 of 5</span>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 3: PO DETAIL -->
+<div class="page">
+    <div class="browser-frame">
+        <div class="browser-chrome">
+            <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+            </div>
+            <div class="browser-address">https://ecobliss.posystem.com/po-detail/PO-2026-INT-SCJ-00011</div>
+        </div>
+        
+        <div class="app-header">
+            <div class="app-title">ECOBLISS PO SYSTEM</div>
+            <div class="app-user">Admin | ANDRY</div>
+        </div>
+        
+        <div class="app-nav">
+            <div class="nav-item">Dashboard</div>
+            <div class="nav-item active">Purchase Order</div>
+            <div class="nav-item">Pengiriman</div>
+            <div class="nav-item">Forecast</div>
+            <div class="nav-item">Logistik</div>
+            <div class="nav-item">Kontrak</div>
+            <div class="nav-item">Import Data</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="page-heading" style="margin-bottom: 6px; padding-bottom: 4px;">PO DETAIL - PENGIRIMAN PARSIAL</div>
+            
+            <div style="margin-bottom: 6px;">
+                <a href="#" style="color: #2563eb; text-decoration: none; font-size: 9px;">← Kembali ke List</a>
+            </div>
+            
+            <!-- Detail Info - Super Compact -->
+            <div class="panel" style="margin-bottom: 6px;">
+                <div class="panel-header" style="padding: 3px 8px; font-size: 9px;">Detail PO</div>
+                <div class="panel-body" style="padding: 4px 8px;">
+                    <table style="width: 100%; font-size: 9px; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding: 2px 4px; width: 12%;"><span style="color: #6b7280; font-size: 8px;">PO Number:</span></td>
+                            <td style="padding: 2px 4px; font-weight: 600;">PO-2026-INT-SCJ-00011</td>
+                            <td style="padding: 2px 4px; width: 10%;"><span style="color: #6b7280; font-size: 8px;">Customer:</span></td>
+                            <td style="padding: 2px 4px; font-weight: 600;">SCJ (SC Johnson)</td>
+                            <td style="padding: 2px 4px; width: 8%;"><span style="color: #6b7280; font-size: 8px;">Tgl PO:</span></td>
+                            <td style="padding: 2px 4px; font-weight: 600;">14-Jan-2026</td>
+                            <td style="padding: 2px 4px; width: 10%;"><span style="color: #6b7280; font-size: 8px;">Due Date:</span></td>
+                            <td style="padding: 2px 4px; font-weight: 600;">25-Jan-2026</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 2px 4px;"><span style="color: #6b7280; font-size: 8px;">Total Qty:</span></td>
+                            <td style="padding: 2px 4px; font-weight: 600;">10,000 PCS</td>
+                            <td style="padding: 2px 4px;"><span style="color: #6b7280; font-size: 8px;">Sisa Qty:</span></td>
+                            <td style="padding: 2px 4px; font-weight: 600;">5,000 PCS</td>
+                            <td style="padding: 2px 4px;"><span style="color: #6b7280; font-size: 8px;">Status:</span></td>
+                            <td style="padding: 2px 4px;"><span class="badge badge-partial" style="font-size: 8px;">Partial</span></td>
+                            <td style="padding: 2px 4px;"><span style="color: #6b7280; font-size: 8px;">Aksi:</span></td>
+                            <td style="padding: 2px 4px;">
+                                <button class="btn btn-sm btn-secondary" style="font-size: 8px; padding: 1px 6px;">Edit</button>
+                                <button class="btn btn-sm btn-secondary" style="font-size: 8px; padding: 1px 6px;">Print</button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="two-columns" style="flex: 1; min-height: 0; gap: 8px;">
+                <!-- Riwayat - Compact -->
+                <div class="panel" style="display: flex; flex-direction: column; margin-bottom: 0;">
+                    <div class="panel-header" style="padding: 4px 10px; font-size: 10px;">Riwayat Pengiriman</div>
+                    <div class="panel-body" style="padding: 6px 10px; flex: 1;">
+                        <table class="data-table" style="font-size: 8px;">
+                            <thead>
+                                <tr>
+                                    <th style="padding: 3px 5px;">Tanggal</th>
+                                    <th style="padding: 3px 5px;">Qty</th>
+                                    <th style="padding: 3px 5px;">Status</th>
+                                    <th style="padding: 3px 5px;">Driver/Truk</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 3px 5px;">18-Jan-26</td>
+                                    <td style="padding: 3px 5px;">5,000</td>
+                                    <td style="padding: 3px 5px;"><span class="badge badge-delivered" style="font-size: 7px;">Delivered</span></td>
+                                    <td style="padding: 3px 5px;">Budi - Fuso B 1234 CD</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-success" style="margin-top: 6px; font-size: 9px; padding: 3px 8px;">+ Tambah Pengiriman</button>
+                    </div>
+                </div>
+                
+                <!-- Form - Compact -->
+                <div class="panel" style="display: flex; flex-direction: column; margin-bottom: 0;">
+                    <div class="panel-header" style="padding: 4px 10px; font-size: 10px;">Form Tambah Pengiriman</div>
+                    <div class="panel-body" style="padding: 6px 10px;">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 6px; margin-bottom: 6px;">
+                            <div>
+                                <label style="font-size: 8px; color: #6b7280; display: block; margin-bottom: 1px;">Tanggal Pengiriman</label>
+                                <input type="date" value="2026-02-02" style="width: 100%; padding: 2px 4px; font-size: 9px; border: 1px solid #d1d5db; border-radius: 3px;">
+                            </div>
+                            <div>
+                                <label style="font-size: 8px; color: #6b7280; display: block; margin-bottom: 1px;">Qty</label>
+                                <input type="number" value="5000" style="width: 100%; padding: 2px 4px; font-size: 9px; border: 1px solid #d1d5db; border-radius: 3px;">
+                            </div>
+                            <div>
+                                <label style="font-size: 8px; color: #6b7280; display: block; margin-bottom: 1px;">Pilih Truk</label>
+                                <select style="width: 100%; padding: 2px 4px; font-size: 9px; border: 1px solid #d1d5db; border-radius: 3px;">
+                                    <option>Pilih truk...</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="font-size: 8px; color: #6b7280; display: block; margin-bottom: 1px;">Driver</label>
+                                <input type="text" placeholder="Nama driver" style="width: 100%; padding: 2px 4px; font-size: 9px; border: 1px solid #d1d5db; border-radius: 3px;">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" style="font-size: 9px; padding: 3px 10px;">Simpan Pengiriman</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Created: 14-Jan-2026 | Last updated: 02-Feb-2026</span>
+            <span>Page 3 of 5</span>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 4: IMPORT DATA -->
+<div class="page">
+    <div class="browser-frame">
+        <div class="browser-chrome">
+            <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+            </div>
+            <div class="browser-address">https://ecobliss.posystem.com/import-data</div>
+        </div>
+        
+        <div class="app-header">
+            <div class="app-title">ECOBLISS PO SYSTEM</div>
+            <div class="app-user">Admin | ANDRY</div>
+        </div>
+        
+        <div class="app-nav">
+            <div class="nav-item">Dashboard</div>
+            <div class="nav-item">Purchase Order</div>
+            <div class="nav-item">Pengiriman</div>
+            <div class="nav-item">Forecast</div>
+            <div class="nav-item">Logistik</div>
+            <div class="nav-item">Kontrak</div>
+            <div class="nav-item active">Import Data</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="page-heading">IMPORT DATA LAMA</div>
+            
+            <!-- Steps -->
+            <div class="steps-container" style="margin-bottom: 8px;">
+                <div class="step-item active">
+                    <div class="step-number">1</div>
+                    <div class="step-label">Pilih Tipe Data</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">2</div>
+                    <div class="step-label">Upload File</div>
+                </div>
+                <div class="step-item">
+                    <div class="step-number">3</div>
+                    <div class="step-label">Preview & Konfirmasi</div>
+                </div>
+            </div>
+            
+            <div class="two-columns" style="flex: 1; min-height: 0;">
+                <!-- Left Column -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="panel" style="margin-bottom: 0;">
+                        <div class="panel-header">Step 1: Pilih Tipe Data</div>
+                        <div class="panel-body">
+                            <div style="display: flex; gap: 4px; flex-wrap: wrap;">
+                                <button class="btn btn-primary">Customer</button>
+                                <button class="btn btn-secondary">Product</button>
+                                <button class="btn btn-secondary">PO</button>
+                                <button class="btn btn-secondary">Pengiriman</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel" style="flex: 1; margin-bottom: 0;">
+                        <div class="panel-header">Step 2: Upload File Excel</div>
+                        <div class="panel-body">
+                            <div class="mb-2">
+                                <div class="text-sm" style="font-weight: 500; margin-bottom: 2px;">1. Download Template</div>
+                                <div class="text-xs" style="color: #6b7280; margin-bottom: 4px;">Download template Excel kosong</div>
+                                <button class="btn btn-secondary">Download template_customer.xlsx</button>
+                            </div>
+                            <div>
+                                <div class="text-sm" style="font-weight: 500; margin-bottom: 2px;">2. Upload File</div>
+                                <div class="text-xs" style="color: #6b7280; margin-bottom: 4px;">File .xlsx atau .csv, maks 10MB</div>
+                                <div class="upload-box" style="padding: 12px;">
+                                    <div class="text-xs" style="color: #9ca3af; margin-bottom: 4px;">No file selected</div>
+                                    <button class="btn btn-primary">Choose File</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right Column -->
+                <div style="display: flex; flex-direction: column; gap: 8px;">
+                    <div class="panel" style="margin-bottom: 0;">
+                        <div class="panel-header">Step 3: Preview & Konfirmasi</div>
+                        <div class="panel-body">
+                            <div class="alert alert-success" style="margin-bottom: 6px;">
+                                <span style="font-size: 14px;">✓</span>
+                                <div>
+                                    <strong style="font-size: 10px;">Validasi Berhasil</strong>
+                                    <div class="text-xs">15 data, 0 error, 0 duplicate</div>
+                                </div>
+                            </div>
+                            
+                            <table class="data-table compact-table">
+                                <thead>
+                                    <tr>
+                                        <th>Row</th>
+                                        <th>Customer Code</th>
+                                        <th>Customer Name</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>1</td>
+                                        <td>SCJ</td>
+                                        <td>SC Johnson</td>
+                                        <td><span class="badge badge-delivered">✓ OK</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>2</td>
+                                        <td>IPMSR</td>
+                                        <td>IndoPaket MSR</td>
+                                        <td><span class="badge badge-delivered">✓ OK</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>3</td>
+                                        <td>IPPB2</td>
+                                        <td>IndoPaket PB2</td>
+                                        <td><span class="badge badge-delivered">✓ OK</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div style="display: flex; gap: 6px; margin-top: 6px;">
+                                <button class="btn btn-success">Import 15 Data</button>
+                                <button class="btn btn-secondary">Batal</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="panel" style="flex: 1; margin-bottom: 0;">
+                        <div class="panel-header">Import History</div>
+                        <div class="panel-body">
+                            <table class="data-table compact-table">
+                                <thead>
+                                    <tr>
+                                        <th>Tanggal</th>
+                                        <th>Tipe</th>
+                                        <th>File</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>02-Feb-26</td>
+                                        <td>Customer</td>
+                                        <td>customer_master.xlsx</td>
+                                        <td><span class="badge badge-delivered">15 OK</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td>01-Feb-26</td>
+                                        <td>Product</td>
+                                        <td>product_list.csv</td>
+                                        <td><span class="badge badge-partial">310 OK, 2 Error</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Last sync: 02-Feb-2026 14:30</span>
+            <span>Page 4 of 5</span>
+        </div>
+    </div>
+</div>
+
+<!-- PAGE 5: LOGISTIK & KONTRAK -->
+<div class="page">
+    <div class="browser-frame">
+        <div class="browser-chrome">
+            <div class="browser-dots">
+                <div class="browser-dot red"></div>
+                <div class="browser-dot yellow"></div>
+                <div class="browser-dot green"></div>
+            </div>
+            <div class="browser-address">https://ecobliss.posystem.com/logistik</div>
+        </div>
+        
+        <div class="app-header">
+            <div class="app-title">ECOBLISS PO SYSTEM</div>
+            <div class="app-user">Admin | ANDRY</div>
+        </div>
+        
+        <div class="app-nav">
+            <div class="nav-item">Dashboard</div>
+            <div class="nav-item">Purchase Order</div>
+            <div class="nav-item">Pengiriman</div>
+            <div class="nav-item">Forecast</div>
+            <div class="nav-item active">Logistik</div>
+            <div class="nav-item">Kontrak</div>
+            <div class="nav-item">Import Data</div>
+        </div>
+        
+        <div class="main-content">
+            <div class="page-heading">LOGISTIK & KONTRAK MANAGEMENT</div>
+            
+            <div class="two-columns" style="flex: 1; min-height: 0;">
+                <!-- Logistik -->
+                <div class="panel" style="display: flex; flex-direction: column; margin-bottom: 0;">
+                    <div class="panel-header">Data Truk & Vendor</div>
+                    <div class="panel-body" style="flex: 1;">
+                        <table class="data-table compact-table">
+                            <thead>
+                                <tr>
+                                    <th>Plat Nomor</th>
+                                    <th>Tipe</th>
+                                    <th>Kapasitas</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>B 1234 CD</td>
+                                    <td>Fuso</td>
+                                    <td>8,000 kg</td>
+                                    <td><span class="badge badge-open">Available</span></td>
+                                </tr>
+                                <tr>
+                                    <td>B 5678 EF</td>
+                                    <td>Pickup</td>
+                                    <td>2,000 kg</td>
+                                    <td><span class="badge badge-partial">On Delivery</span></td>
+                                </tr>
+                                <tr>
+                                    <td>B 9012 GH</td>
+                                    <td>Wingbox</td>
+                                    <td>15,000 kg</td>
+                                    <td><span class="badge badge-open">Available</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <!-- Kontrak -->
+                <div class="panel" style="display: flex; flex-direction: column; margin-bottom: 0;">
+                    <div class="panel-header">Detail Kontrak - UPA</div>
+                    <div class="panel-body">
+                        <div class="mb-2">
+                            <div class="text-xs" style="color: #6b7280;">No Kontrak: KONTRAK-001/2026</div>
+                            <div class="text-xs" style="color: #6b7280;">Periode: Jan 2026 - Des 2026</div>
+                            <div class="text-xs" style="color: #6b7280;">Total Kontrak: 10,000 pcs</div>
+                        </div>
+                        <div class="mb-2">
+                            <div style="display: flex; justify-content: space-between; font-size: 10px; margin-bottom: 2px;">
+                                <span>Progres Kontrak</span>
+                                <span style="font-weight: bold;">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 80%;"></div>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-top: 2px; font-size: 9px; color: #6b7280;">
+                                <span>Terpakai: 8,000 pcs</span>
+                                <span>Sisa: 2,000 pcs</span>
+                            </div>
+                        </div>
+                        <div class="alert alert-warning" style="margin-bottom: 0; padding: 5px 8px;">
+                            <span>⚠️</span>
+                            <span class="text-xs">Warning: Sisa kontrak 2,000 pcs!</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Forecast -->
+            <div class="panel" style="margin-bottom: 0; margin-top: 8px;">
+                <div class="panel-header">Forecast - Input Target Bulanan</div>
+                <div class="panel-body" style="padding: 6px 12px;">
+                    <div style="display: flex; gap: 8px; margin-bottom: 6px;">
+                        <select class="filter-input">
+                            <option>Februari</option>
+                        </select>
+                        <select class="filter-input">
+                            <option>2026</option>
+                        </select>
+                        <button class="btn btn-secondary">Export Excel</button>
+                    </div>
+                    
+                    <table class="data-table compact-table">
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Target Qty</th>
+                                <th>Realisasi</th>
+                                <th>Sisa</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>SCJ</td>
+                                <td>50,000</td>
+                                <td>45,000</td>
+                                <td>5,000</td>
+                                <td>90%</td>
+                            </tr>
+                            <tr>
+                                <td>IndoPaket</td>
+                                <td>100,000</td>
+                                <td>89,000</td>
+                                <td>11,000</td>
+                                <td>89%</td>
+                            </tr>
+                            <tr>
+                                <td>Indomaret</td>
+                                <td>30,000</td>
+                                <td>30,000</td>
+                                <td>0</td>
+                                <td>100%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="page-footer">
+            <span>Last sync: 02-Feb-2026 14:30</span>
+            <span>Page 5 of 5</span>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

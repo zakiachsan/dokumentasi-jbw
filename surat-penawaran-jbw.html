@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Penawaran - JagoBikinWebsite</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #000;
+            background: white;
+        }
+        
+        .signature-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28pt;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #000;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm 20mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            page-break-after: always;
+        }
+        
+        .page:last-child {
+            page-break-after: auto;
+        }
+        
+        /* Header / Kop Surat */
+        .letterhead {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double #000;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #1a365d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+            text-align: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .company-info {
+            flex: 1;
+        }
+        
+        .company-name {
+            font-size: 22pt;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 3px;
+        }
+        
+        .company-tagline {
+            font-size: 11pt;
+            color: #666;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        
+        .company-address {
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #333;
+        }
+        
+        .company-contact {
+            font-size: 10pt;
+            margin-top: 5px;
+            color: #333;
+        }
+        
+        /* Judul Surat */
+        .letter-title {
+            text-align: center;
+            margin: 30px 0 25px;
+        }
+        
+        .letter-title h1 {
+            font-size: 16pt;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .letter-meta {
+            font-size: 11pt;
+            display: flex;
+            justify-content: space-between;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        /* Tujuan Surat */
+        .recipient {
+            margin-bottom: 20px;
+        }
+        
+        .recipient-label {
+            margin-bottom: 15px;
+        }
+        
+        .recipient-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .recipient-position {
+            margin-bottom: 3px;
+        }
+        
+        .recipient-address {
+            line-height: 1.5;
+        }
+        
+        /* Isi Surat */
+        .letter-body {
+            text-align: justify;
+        }
+        
+        .salutation {
+            margin-bottom: 15px;
+        }
+        
+        .paragraph {
+            margin-bottom: 15px;
+            text-indent: 30px;
+        }
+        
+        .paragraph-no-indent {
+            margin-bottom: 15px;
+        }
+        
+        /* Tabel Penawaran */
+        .table-container {
+            margin: 20px 0;
+        }
+        
+        .table-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 10pt;
+        }
+        
+        table, th, td {
+            border: 1px solid #000;
+        }
+        
+        th {
+            background: #f0f0f0;
+            padding: 8px 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10pt;
+        }
+        
+        td {
+            padding: 6px 5px;
+            vertical-align: top;
+        }
+        
+        td:first-child {
+            text-align: center;
+        }
+        
+        td:nth-child(4),
+        td:nth-child(5),
+        td:nth-child(6) {
+            text-align: right;
+        }
+        
+        .total-row {
+            font-weight: bold;
+            background: #f9f9f9;
+        }
+        
+        .total-row td {
+            padding: 8px 5px;
+        }
+        
+        /* Terbilang */
+        .terbilang {
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .terbilang-label {
+            font-weight: bold;
+        }
+        
+        /* Keterangan */
+        .notes {
+            margin: 20px 0;
+        }
+        
+        .notes-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+        
+        .notes-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .notes-list li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .notes-list li:before {
+            content: "-";
+            position: absolute;
+            left: 5px;
+        }
+        
+        /* Syarat dan Ketentuan */
+        .terms {
+            margin: 20px 0;
+        }
+        
+        .terms-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .terms-list {
+            padding-left: 25px;
+        }
+        
+        .terms-list li {
+            margin-bottom: 8px;
+            text-align: justify;
+        }
+        
+        /* Penutup */
+        .closing {
+            margin: 25px 0;
+        }
+        
+        .closing-text {
+            text-indent: 30px;
+            margin-bottom: 10px;
+        }
+        
+        /* Tanda Tangan */
+        .signature {
+            margin-top: 40px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .signature-box {
+            width: 250px;
+            text-align: center;
+        }
+        
+        .signature-greeting {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        
+        .signature-place {
+            text-align: left;
+            margin-bottom: 60px;
+        }
+        
+        .signature-company {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .signature-line {
+            border-bottom: 1px solid #000;
+            margin-bottom: 5px;
+            width: 200px;
+            margin: 0 auto 5px;
+        }
+        
+        .signature-position {
+            margin-bottom: 10px;
+        }
+        
+        .signature-contact {
+            font-size: 10pt;
+        }
+        
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                box-shadow: none;
+                margin: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- PAGE 1: Surat Penawaran -->
+<div class="page">
+    <!-- Kop Surat -->
+    <div class="letterhead">
+        <div class="company-info">
+            <div class="company-name">JAGOBikinWebsite</div>
+            <div class="company-tagline">Digital Agency | Jasa Pembuatan Website</div>
+            <div class="company-address">
+                Green Andara Residence blok C6, No.7
+            </div>
+            <div class="company-contact">
+                Telepon: 6285694662592 | Email: jagobikinwebsite28@gmail.com | jagobikinwebsite.com
+            </div>
+        </div>
+    </div>
+
+    <!-- Judul Surat -->
+    <div class="letter-title">
+        <h1>SURAT PENAWARAN</h1>
+        <div class="letter-meta">
+            <span>Nomor: 001/JBW/II/2026</span>
+            <span>Tanggal: 05 Februari 2026</span>
+        </div>
+    </div>
+
+    <!-- Tujuan Surat -->
+    <div class="recipient">
+        <div class="recipient-label">Yth.</div>
+        <div class="recipient-name">[Nama Client]</div>
+        <div class="recipient-position">[PT Client]</div>
+        <div class="recipient-address">
+            Di tempat
+        </div>
+    </div>
+
+    <!-- Isi Surat -->
+    <div class="letter-body">
+        <div class="salutation">
+            Dengan hormat,
+        </div>
+
+        <div class="paragraph">
+            Sebelumnya kami ucapkan terima kasih atas kesempatan yang diberikan kepada kami untuk dapat mengajukan penawaran jasa pembuatan website. Kami, JagoBikinWebsite, adalah sebuah digital agency yang berfokus pada pembuatan website profesional untuk berbagai kebutuhan bisnis dan organisasi.
+        </div>
+
+        <div class="paragraph">
+            Bersama surat ini, kami sampaikan penawaran harga untuk pembuatan website sesuai dengan permintaan Bapak/Ibu. Detail penawaran kami sampaikan pada tabel di bawah ini:
+        </div>
+
+        <!-- Tabel Penawaran -->
+        <div class="table-container">
+            <div class="table-title">TABEL PENAWARAN</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 25%;">Nama Paket</th>
+                        <th style="width: 35%;">Spesifikasi</th>
+                        <th style="width: 8%;">Qty</th>
+                        <th style="width: 13%;">Harga</th>
+                        <th style="width: 14%;">Total</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Paket Website Company Profile</td>
+                        <td>
+                            - Halaman: Home, About, Services, Portfolio, Contact<br>
+                            - Responsive Design (Mobile & Desktop)<br>
+                            - SEO Basic<br>
+                            - Integrasi Social Media<br>
+                            - Form Kontak<br>
+                            - Slideshow/Gallery
+                        </td>
+                        <td>1</td>
+                        <td>Rp 5.000.000</td>
+                        <td>Rp 5.000.000</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Domain & Hosting 1 Tahun</td>
+                        <td>
+                            - Domain .com / .co.id<br>
+                            - Hosting 5 GB SSD<br>
+                            - SSL Certificate<br>
+                            - Email Bisnis
+                        </td>
+                        <td>1</td>
+                        <td>Rp 1.500.000</td>
+                        <td>Rp 1.500.000</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Maintenance 6 Bulan</td>
+                        <td>
+                            - Update konten (max 4x/bulan)<br>
+                            - Backup rutin<br>
+                            - Security monitoring<br>
+                            - Technical support
+                        </td>
+                        <td>1</td>
+                        <td>Rp 1.000.000</td>
+                        <td>Rp 1.000.000</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="5" style="text-align: right;">TOTAL</td>
+                        <td>Rp 7.500.000</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Terbilang -->
+        <div class="terbilang">
+            <span class="terbilang-label">Terbilang:</span> Tujuh Juta Lima Ratus Ribu Rupiah
+        </div>
+
+        <!-- Keterangan -->
+        <div class="notes">
+            <div class="notes-title">Keterangan:</div>
+            <ul class="notes-list">
+                <li>Harga di atas belum termasuk PPN 11%</li>
+                <li>Harga sudah termasuk domain dan hosting untuk 1 tahun</li>
+                <li>Harga dapat berubah sesuai dengan fitur tambahan yang diminta</li>
+            </ul>
+        </div>
+
+        <!-- Syarat dan Ketentuan -->
+        <div class="terms">
+            <div class="terms-title">Syarat dan Ketentuan:</div>
+            <ol class="terms-list">
+                <li><strong>Cara Pembayaran:</strong> DP 50% (Rp 3.750.000) diawal dan Pelunasan 50% (Rp 3.750.000) setelah website selesai dan siap publish.</li>
+                <li><strong>Durasi Pengerjaan:</strong> Estimasi 14-21 hari kerja sejak DP diterima dan data lengkap diberikan.</li>
+                <li><strong>Garansi:</strong> 3 bulan gratis maintenance untuk perbaikan bug dan error teknis.</li>
+                <li><strong>Revisi:</strong> 2 kali revisi major selama proses pengerjaan. Revisi minor tidak terbatas.</li>
+                <li><strong>Pembatalan:</strong> Jika project dibatalkan oleh klien setelah DP diterima, DP tidak dapat dikembalikan namun data desain tetap menjadi milik klien.</li>
+            </ol>
+        </div>
+
+        <!-- Penutup -->
+        <div class="closing">
+            <div class="closing-text">
+                Demikian penawaran ini kami sampaikan. Besar harapan kami untuk dapat bekerja sama dengan Bapak/Ibu. Apabila ada hal yang perlu ditanyakan atau diskusikan lebih lanjut, silakan menghubungi kami melalui kontak yang tersedia.
+            </div>
+            <div class="closing-text">
+                Atas perhatian dan kesempatan yang diberikan, kami ucapkan terima kasih.
+            </div>
+        </div>
+
+        <!-- Tanda Tangan -->
+        <div class="signature">
+            <div class="signature-box">
+                <div class="signature-greeting">Hormat kami,</div>
+                <div class="signature-place">Jakarta, 05 Februari 2026</div>
+                <div style="margin: 40px 0 5px;">
+                    <div class="signature-name">ZakiAchsan</div>
+                </div>
+                <div class="signature-line" style="margin: 5px 0;"></div>
+                <div style="font-weight: bold; margin-bottom: 3px;">Muhammad Zaki Achsan</div>
+                <div class="signature-position">Direktur</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
