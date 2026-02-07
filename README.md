@@ -111,6 +111,47 @@ Template invoice profesional dengan format:
 
 ---
 
+### 6. Invoice Partial Payment Template (HTML)
+**File**: `invoice-partial-payment-template.html`
+
+Template invoice untuk penagihan sisa pembayaran (partial payment) dengan format:
+- Header: Logo company + Judul INVOICE + Status Badge (Partial Payment)
+- Issued To: Nama client & alamat
+- Invoice Meta: Date, Due Date, Invoice #, Reference #
+- Tabel Items: Description, Total
+- **Payment History**: Menunjukkan pembayaran yang sudah diterima
+- **Outstanding Balance**: Menunjukkan sisa tagihan yang belum dibayar
+- Total Summary: Project Total, Amount Paid, Balance Due
+- Payment Info: BCA 6755381296 a.n Muhammad Zaki Achsan
+- Notes: Penjelasan tentang partial payment
+- Signature: ZakiAchsan (signature font)
+
+**Fitur khusus:**
+- ✅ Menampilkan riwayat pembayaran (down payment)
+- ✅ Menampilkan sisa tagihan yang harus dibayar
+- ✅ Status badge "Partial Payment"
+- ✅ Reference ke invoice sebelumnya
+- ✅ Bahasa Inggris (lebih formal untuk corporate)
+
+**Placeholder yang perlu diisi:**
+- [NAMA CLIENT / PT]
+- [ALAMAT CLIENT]
+- [DD.MM.YYYY] untuk date & due date
+- [INV/XXX/2026] untuk nomor invoice
+- [Reference invoice sebelumnya]
+- [Deskripsi Project]
+- [Total Project], [Amount Paid], [Balance Due]
+
+**Cara penggunaan**:
+1. Buka file HTML
+2. Ganti placeholder [...] dengan data client
+3. Edit deskripsi project dan nama website
+4. Update payment history (down payment yang sudah diterima)
+5. Update outstanding balance (sisa yang harus dibayar)
+6. Convert ke PDF
+
+---
+
 ## Cara Convert HTML ke PDF
 
 ### Using wkhtmltopdf
@@ -137,6 +178,13 @@ wkhtmltopdf --page-size A4 --margin-top 15mm --margin-bottom 15mm \
   invoice-jbw.html invoice-client.pdf
 ```
 
+**Invoice Partial Payment (A4)**:
+```bash
+wkhtmltopdf --page-size A4 --margin-top 15mm --margin-bottom 15mm \
+  --margin-left 20mm --margin-right 20mm \
+  invoice-partial-payment-template.html invoice-partial.pdf
+```
+
 ---
 
 ## Notion References
@@ -155,7 +203,8 @@ Templates ini juga direferensikan di Notion:
 
 **Updates**:
 - Added Invoice Template (invoice-jbw.html & invoice-jbw.pdf)
-- Updated README with invoice usage instructions
+- Added Invoice Partial Payment Template (invoice-partial-payment-template.html & .pdf)
+- Updated README with invoice templates documentation
 
 **Author**: Zaki Achsan
 **Company**: JagoBikinWebsite

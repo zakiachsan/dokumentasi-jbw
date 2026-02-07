@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice - JagoBikinWebsite</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #000;
+            background: white;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm 25mm;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #1a365d;
+        }
+        
+        .company-info h1 {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 5px;
+        }
+        
+        .company-info p {
+            font-size: 9pt;
+            color: #555;
+            line-height: 1.4;
+        }
+        
+        .invoice-title {
+            text-align: right;
+        }
+        
+        .invoice-title h2 {
+            font-size: 28pt;
+            font-weight: bold;
+            color: #1a365d;
+            letter-spacing: 3px;
+        }
+        
+        .invoice-title p {
+            font-size: 10pt;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .invoice-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        
+        .issued-to {
+            flex: 1;
+        }
+        
+        .issued-to h3 {
+            font-size: 10pt;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+        
+        .issued-to .client-name {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #1a365d;
+            margin-bottom: 5px;
+        }
+        
+        .issued-to .client-address {
+            font-size: 10pt;
+            color: #333;
+            line-height: 1.5;
+        }
+        
+        .invoice-meta {
+            width: 200px;
+        }
+        
+        .meta-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 10pt;
+        }
+        
+        .meta-label {
+            color: #666;
+        }
+        
+        .meta-value {
+            font-weight: bold;
+            color: #1a365d;
+        }
+        
+        .status-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 3px;
+            font-size: 8pt;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        
+        .status-partial {
+            background: #fef3c7;
+            color: #92400e;
+        }
+        
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        
+        .invoice-table thead th {
+            background: #1a365d;
+            color: white;
+            padding: 12px 10px;
+            text-align: left;
+            font-size: 10pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .invoice-table thead th:last-child {
+            text-align: right;
+        }
+        
+        .invoice-table tbody td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #ddd;
+            font-size: 10pt;
+        }
+        
+        .invoice-table tbody td:last-child {
+            text-align: right;
+            font-weight: bold;
+        }
+        
+        .payment-history {
+            background: #f0fdf4;
+            border: 1px solid #86efac;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .payment-history h3 {
+            font-size: 10pt;
+            color: #166534;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .payment-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 10pt;
+            margin-bottom: 5px;
+        }
+        
+        .payment-label {
+            color: #166534;
+        }
+        
+        .payment-value {
+            font-weight: bold;
+            color: #166534;
+        }
+        
+        .outstanding {
+            background: #fef2f2;
+            border: 2px solid #ef4444;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .outstanding h3 {
+            font-size: 11pt;
+            color: #dc2626;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+        
+        .outstanding-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 12pt;
+            font-weight: bold;
+        }
+        
+        .outstanding-label {
+            color: #dc2626;
+        }
+        
+        .outstanding-value {
+            color: #dc2626;
+            font-size: 14pt;
+        }
+        
+        .total-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 30px;
+        }
+        
+        .total-box {
+            width: 300px;
+        }
+        
+        .total-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 10pt;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .total-row.grand-total {
+            border-top: 2px solid #1a365d;
+            border-bottom: none;
+            margin-top: 5px;
+            padding-top: 10px;
+            font-size: 12pt;
+            font-weight: bold;
+            color: #1a365d;
+        }
+        
+        .payment-section {
+            margin-bottom: 30px;
+        }
+        
+        .payment-section h3 {
+            font-size: 10pt;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+        
+        .payment-box {
+            background: #f8f9fa;
+            border: 1px solid #ddd;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        
+        .payment-row-detail {
+            display: flex;
+            margin-bottom: 5px;
+            font-size: 10pt;
+        }
+        
+        .payment-label {
+            width: 150px;
+            color: #666;
+        }
+        
+        .payment-value {
+            font-weight: bold;
+            color: #1a365d;
+        }
+        
+        .notes-section {
+            background: #f8f9fa;
+            border-left: 4px solid #1a365d;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .notes-section h3 {
+            font-size: 10pt;
+            color: #1a365d;
+            margin-bottom: 8px;
+        }
+        
+        .notes-section p {
+            font-size: 9pt;
+            color: #555;
+            line-height: 1.6;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        .footer p {
+            font-size: 9pt;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .signature-section {
+            display: flex;
+            justify-content: flex-end;
+            margin-top: 60px;
+        }
+        
+        .signature-box {
+            width: 250px;
+            text-align: center;
+        }
+        
+        .signature-line {
+            margin-bottom: 10px;
+            font-size: 9pt;
+            color: #666;
+        }
+        
+        .signature-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 24pt;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #000;
+        }
+        
+        .signature-divider {
+            border-bottom: 1px solid #000;
+            margin: 5px 0;
+            width: 200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .signature-fullname {
+            font-weight: bold;
+            font-size: 11pt;
+        }
+        
+        .signature-title {
+            font-size: 10pt;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+
+<div class="page">
+    <!-- Header -->
+    <div class="header">
+        <div class="company-info">
+            <h1>JAGOBikinWebsite</h1>
+            <p>Digital Agency | Jasa Pembuatan Website</p>
+            <p style="margin-top: 5px;">Green Andara Residence blok C6, No.7</p>
+            <p>Telepon: 6285694662592 | Email: jagobikinwebsite28@gmail.com</p>
+            <p>jagobikinwebsite.com</p>
+        </div>
+        <div class="invoice-title">
+            <h2>INVOICE</h2>
+            <span class="status-badge status-partial">Partial Payment</span>
+        </div>
+    </div>
+
+    <!-- Invoice Info -->
+    <div class="invoice-info">
+        <div class="issued-to">
+            <h3>ISSUED TO:</h3>
+            <div class="client-name">PT Cipta Sejahtera Lestari (Pak Ricky)</div>
+            <div class="client-address">
+                Rukan Artha Gading Niaga Blok C 30<br>
+                Kelapa Gading, Jakarta Utara, 14240
+            </div>
+        </div>
+        <div class="invoice-meta">
+            <div class="meta-row">
+                <span class="meta-label">DATE:</span>
+                <span class="meta-value">07.02.2026</span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">DUE DATE:</span>
+                <span class="meta-value">14.02.2026</span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">INVOICE #:</span>
+                <span class="meta-value">INV/002/2026</span>
+            </div>
+            <div class="meta-row">
+                <span class="meta-label">REF:</span>
+                <span class="meta-value">INV/001/2026</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Description -->
+    <table class="invoice-table">
+        <thead>
+            <tr>
+                <th style="width: 70%;">DESCRIPTION</th>
+                <th style="width: 30%;">TOTAL</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <strong>Redesign & Rebuild Website</strong><br>
+                    <span style="font-size: 9pt; color: #666;">kontraktoracdaikin.com</span>
+                </td>
+                <td>Rp 3.500.000</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Payment History -->
+    <div class="payment-history">
+        <h3>✓ PAYMENT HISTORY</h3>
+        <div class="payment-row">
+            <span class="payment-label">Down Payment (19.12.2025)</span>
+            <span class="payment-value">Rp 2.200.000</span>
+        </div>
+    </div>
+
+    <!-- Outstanding Balance -->
+    <div class="outstanding">
+        <h3>OUTSTANDING BALANCE</h3>
+        <div class="outstanding-row">
+            <span class="outstanding-label">AMOUNT DUE</span>
+            <span class="outstanding-value">Rp 1.300.000</span>
+        </div>
+    </div>
+
+    <!-- Total Summary -->
+    <div class="total-section">
+        <div class="total-box">
+            <div class="total-row">
+                <span>PROJECT TOTAL</span>
+                <span>Rp 3.500.000</span>
+            </div>
+            <div class="total-row">
+                <span>AMOUNT PAID</span>
+                <span style="color: #166534;">- Rp 2.200.000</span>
+            </div>
+            <div class="total-row grand-total">
+                <span>BALANCE DUE</span>
+                <span style="color: #dc2626;">Rp 1.300.000</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Payment Info -->
+    <div class="payment-section">
+        <h3>PAYMENT INFO:</h3>
+        <div class="payment-box">
+            <div class="payment-row-detail">
+                <span class="payment-label">Bank:</span>
+                <span class="payment-value">BCA</span>
+            </div>
+            <div class="payment-row-detail">
+                <span class="payment-label">Account Name:</span>
+                <span class="payment-value">Muhammad Zaki Achsan</span>
+            </div>
+            <div class="payment-row-detail">
+                <span class="payment-label">Account No:</span>
+                <span class="payment-value">6755381296</span>
+            </div>
+            <div class="payment-row-detail" style="margin-top: 10px; padding-top: 10px; border-top: 1px dashed #ddd;">
+                <span class="payment-label">Amount to Transfer:</span>
+                <span class="payment-value" style="color: #dc2626; font-size: 12pt;">Rp 1.300.000</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notes -->
+    <div class="notes-section">
+        <h3>NOTES</h3>
+        <p>
+            This invoice is for the remaining balance of website development project. <br>
+            Down payment of Rp 2,200,000 has been received on 19 December 2025. <br>
+            Please complete the payment within 7 days from the invoice date. <br>
+            Other project items (Digital Marketing, Virtual Showroom, etc.) will be invoiced separately upon confirmation.
+        </p>
+    </div>
+
+    <!-- Signature -->
+    <div class="signature-section">
+        <div class="signature-box">
+            <div class="signature-line">Best Regards,</div>
+            <div style="margin-bottom: 40px;">07 February 2026</div>
+            <div class="signature-name">ZakiAchsan</div>
+            <div class="signature-divider"></div>
+            <div class="signature-fullname">Muhammad Zaki Achsan</div>
+            <div class="signature-title">Director, JagoBikinWebsite</div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>Thank you for your business. This invoice is valid without a physical signature.</p>
+        <p style="font-size: 8pt; color: #999; margin-top: 10px;">For questions regarding this invoice, please contact us at jagobikinwebsite28@gmail.com</p>
+    </div>
+</div>
+
+</body>
+</html>
