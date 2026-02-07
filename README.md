@@ -82,6 +82,35 @@ Panduan lengkap format wireframe termasuk:
 
 ---
 
+### 5. Invoice Template (HTML)
+**File**: `invoice-jbw.html`
+
+Template invoice profesional dengan format:
+- Header: Logo company + Judul INVOICE
+- Issued To: Nama client & alamat
+- Invoice Meta: Date, Due Date, Invoice #
+- Tabel Items: Description, Qty, Total
+- Total: Subtotal, Tax, Grand Total
+- Payment Info: BCA 6755381296 a.n Muhammad Zaki Achsan
+- Signature: ZakiAchsan (signature font)
+
+**Placeholder yang perlu diisi:**
+- [NAMA CLIENT / PT]
+- [ALAMAT CLIENT]
+- [DD.MM.YYYY] untuk date & due date
+- [INV/XXX/2025] untuk nomor invoice
+- [Deskripsi Item] & [HARGA]
+- [SUBTOTAL] & [TOTAL]
+
+**Cara penggunaan**:
+1. Buka file HTML
+2. Ganti placeholder [...] dengan data client
+3. Edit items sesuai project
+4. Update total harga
+5. Convert ke PDF (lihat command di bawah)
+
+---
+
 ## Cara Convert HTML ke PDF
 
 ### Using wkhtmltopdf
@@ -101,6 +130,13 @@ wkhtmltopdf --page-size A4 --orientation landscape \
   ecobliss-wireframe-browser.html wireframe.pdf
 ```
 
+**Invoice (A4)**:
+```bash
+wkhtmltopdf --page-size A4 --margin-top 15mm --margin-bottom 15mm \
+  --margin-left 20mm --margin-right 20mm \
+  invoice-jbw.html invoice-client.pdf
+```
+
 ---
 
 ## Notion References
@@ -115,7 +151,11 @@ Templates ini juga direferensikan di Notion:
 ---
 
 ## Last Updated
-2026-02-05
+2026-02-07
+
+**Updates**:
+- Added Invoice Template (invoice-jbw.html & invoice-jbw.pdf)
+- Updated README with invoice usage instructions
 
 **Author**: Zaki Achsan
 **Company**: JagoBikinWebsite
