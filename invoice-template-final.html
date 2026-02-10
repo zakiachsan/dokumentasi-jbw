@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Final - {{COMPANY_NAME}}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        .invoice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            border-bottom: 3px double #1e3a5f;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .company-name {
+            font-size: 24pt;
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-bottom: 5px;
+        }
+        .company-tagline {
+            font-size: 11pt;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+        .company-info {
+            font-size: 10pt;
+            color: #555;
+            line-height: 1.8;
+        }
+        .invoice-title {
+            text-align: center;
+            margin: 30px 0;
+        }
+        .invoice-title h1 {
+            font-size: 20pt;
+            font-weight: bold;
+            color: #1e3a5f;
+            letter-spacing: 3px;
+            border-bottom: 2px solid #1e3a5f;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+        .invoice-number {
+            margin-top: 10px;
+            font-size: 11pt;
+            color: #555;
+        }
+        .paid-stamp {
+            position: absolute;
+            top: 150px;
+            right: 50px;
+            border: 4px solid #27ae60;
+            color: #27ae60;
+            font-size: 24pt;
+            font-weight: bold;
+            padding: 10px 20px;
+            transform: rotate(-15deg);
+            opacity: 0.7;
+        }
+        .info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+        .info-box { width: 48%; }
+        .info-label {
+            font-weight: bold;
+            color: #1e3a5f;
+            margin-bottom: 8px;
+            font-size: 11pt;
+        }
+        .info-content {
+            font-size: 11pt;
+            line-height: 1.8;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            font-size: 11pt;
+        }
+        .items-table thead {
+            background: #1e3a5f;
+            color: white;
+        }
+        .items-table th {
+            padding: 12px 10px;
+            text-align: left;
+            font-weight: bold;
+            border: 1px solid #1e3a5f;
+        }
+        .items-table td {
+            padding: 12px 10px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+        .summary-section {
+            margin-top: 30px;
+            border-top: 2px solid #1e3a5f;
+            padding-top: 20px;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 10px;
+            font-size: 11pt;
+        }
+        .summary-label {
+            width: 220px;
+            text-align: right;
+            padding-right: 20px;
+        }
+        .summary-value {
+            width: 150px;
+            text-align: right;
+            font-weight: bold;
+        }
+        .total-row {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #1e3a5f;
+            border-top: 2px solid #1e3a5f;
+            padding-top: 10px;
+            margin-top: 10px;
+        }
+        .final-row {
+            font-size: 14pt;
+            font-weight: bold;
+            color: #c0392b;
+            margin-top: 10px;
+        }
+        .payment-info {
+            margin-top: 40px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-left: 4px solid #1e3a5f;
+        }
+        .payment-info h3 {
+            color: #1e3a5f;
+            margin-bottom: 10px;
+            font-size: 12pt;
+        }
+        .payment-info p {
+            margin: 5px 0;
+            font-size: 11pt;
+        }
+        .footer {
+            margin-top: 50px;
+            text-align: center;
+            font-size: 10pt;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+        .signature-section {
+            margin-top: 60px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        .signature-box {
+            width: 250px;
+            text-align: center;
+        }
+        .signature-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28pt;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #1e3a5f;
+            text-align: center;
+        }
+        .signature-line {
+            border-top: 1px solid #333;
+            padding-top: 10px;
+            margin-top: 30px;
+            font-size: 11pt;
+        }
+        @media print {
+            body { background: white; padding: 0; }
+            .invoice-container { box-shadow: none; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="invoice-container" style="position: relative;">
+        <div class="header">
+            <div class="company-name">JAGOBIKINWEBSITE</div>
+            <div class="company-tagline">Digital Agency - Jasa Pembuatan Website Profesional</div>
+            <div class="company-info">
+                Green Andara Residence Blok C6, No.7<br>
+                Telepon: 0856-9466-2592<br>
+                Email: jagobikinwebsite28@gmail.com<br>
+                Website: www.jagobikinwebsite.com
+            </div>
+        </div>
+        
+        <div class="invoice-title">
+            <h1>INVOICE</h1>
+            <div class="invoice-number">
+                No: {{INVOICE_NUMBER}}<br>
+                Tanggal: {{INVOICE_DATE}}
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <div class="info-box">
+                <div class="info-label">KEPADA:</div>
+                <div class="info-content">
+                    <strong>{{CLIENT_NAME}}</strong><br>
+                    {{CLIENT_COMPANY}}<br><br>
+                    <em>Client JagoBikinWebsite</em>
+                </div>
+            </div>
+            <div class="info-box">
+                <div class="info-label">INFORMASI INVOICE:</div>
+                <div class="info-content">
+                    <strong>No. Invoice:</strong> {{INVOICE_NUMBER}}<br>
+                    <strong>Tanggal:</strong> {{INVOICE_DATE}}<br>
+                    <strong>Jatuh Tempo:</strong> {{DUE_DATE}} (7 hari)<br>
+                    <strong>Status:</strong> <span style="color: #c0392b; font-weight: bold;">FINAL PAYMENT</span>
+                </div>
+            </div>
+        </div>
+        
+        <table class="items-table">
+            <thead>
+                <tr>
+                    <th style="width: 5%;">No</th>
+                    <th style="width: 50%;">Deskripsi</th>
+                    <th style="width: 15%;" class="text-right">Qty</th>
+                    <th style="width: 15%;" class="text-right">Harga</th>
+                    <th style="width: 15%;" class="text-right">Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="text-center">1</td>
+                    <td>
+                        <strong>{{PROJECT_NAME}}</strong><br>
+                        <span style="font-size: 10pt; color: #666;">{{PROJECT_DESCRIPTION}}</span>
+                    </td>
+                    <td class="text-right">1</td>
+                    <td class="text-right">{{PROJECT_PRICE}}</td>
+                    <td class="text-right">{{PROJECT_PRICE}}</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="summary-section">
+            <div class="summary-row">
+                <div class="summary-label">TOTAL PROJECT:</div>
+                <div class="summary-value">{{TOTAL}}</div>
+            </div>
+            <div class="summary-row">
+                <div class="summary-label">DP (Paid):</div>
+                <div class="summary-value">{{DP_AMOUNT}}</div>
+            </div>
+            <div class="summary-row">
+                <div class="summary-label">Progress (Paid):</div>
+                <div class="summary-value" style="color: #27ae60;">{{PROGRESS_AMOUNT}}</div>
+            </div>
+            <div class="summary-row final-row">
+                <div class="summary-label">FINAL PAYMENT:</div>
+                <div class="summary-value">{{FINAL_AMOUNT}}</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px; font-style: italic; color: #555;">
+            <strong>Terbilang:</strong> {{TERBILANG}}
+        </div>
+        
+        <div class="payment-info">
+            <h3>Informasi Pembayaran:</h3>
+            <p><strong>Bank Transfer:</strong></p>
+            <p>Bank BCA</p>
+            <p>No. Rekening: 6755381296</p>
+            <p>Atas Nama: Muhammad Zaki Achsan</p>
+            <br>
+            <p style="font-size: 10pt; color: #666;">
+                * Mohon cantumkan nomor invoice saat transfer<br>
+                * Konfirmasi pembayaran ke WhatsApp: 0856-9466-2592
+            </p>
+        </div>
+        
+        <div style="margin-top: 30px; font-size: 10pt; color: #555;">
+            <strong>Syarat & Ketentuan:</strong>
+            <ol style="margin-left: 20px; margin-top: 10px; line-height: 1.8;">
+                <li>Pembayaran final paling lambat 7 hari setelah invoice diterima</li>
+                <li>File source code dan asset akan diberikan setelah pelunasan</li>
+                <li>Garansi perbaikan bug selama 30 hari setelah handover</li>
+                <li>Project dianggap selesai setelah pembayaran final diterima</li>
+            </ol>
+        </div>
+        
+        <div class="signature-section">
+            <div class="signature-box">
+                <div class="signature-name">ZakiAchsan</div>
+                <div class="signature-line">
+                    <strong>Muhammad Zaki Achsan</strong><br>
+                    JagoBikinWebsite
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Terima kasih atas kepercayaan Anda menggunakan jasa JagoBikinWebsite</p>
+            <p style="margin-top: 10px;">
+                <em>Invoice ini dibuat secara otomatis dan sah tanpa tanda tangan</em>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
