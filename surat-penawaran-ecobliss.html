@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surat Penawaran - JagoBikinWebsite</title>
+    <title>Surat Penawaran - Ecobliss - JagoBikinWebsite</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
         
@@ -32,7 +32,7 @@
         .page {
             width: 210mm;
             min-height: 297mm;
-            padding: 25mm 20mm;
+            padding: 20mm 20mm;
             margin: 0 auto;
             background: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -100,7 +100,7 @@
         /* Judul Surat */
         .letter-title {
             text-align: center;
-            margin: 30px 0 25px;
+            margin: 20px 0 15px;
         }
         
         .letter-title h1 {
@@ -151,12 +151,12 @@
         }
         
         .paragraph {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
             text-indent: 30px;
         }
         
         .paragraph-no-indent {
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
         /* Tabel Penawaran */
@@ -264,8 +264,26 @@
         }
         
         .terms-list li {
-            margin-bottom: 8px;
+            margin-bottom: 6px;
             text-align: justify;
+            page-break-inside: avoid;
+        }
+        
+        /* Prevent awkward page breaks */
+        .terms {
+            page-break-inside: avoid;
+        }
+        
+        .notes {
+            page-break-inside: avoid;
+        }
+        
+        .signature {
+            page-break-inside: avoid;
+        }
+        
+        .closing {
+            page-break-inside: avoid;
         }
         
         /* Penutup */
@@ -337,7 +355,7 @@
 </head>
 <body>
 
-<!-- PAGE 1: Surat Penawaran -->
+<!-- PAGE 1: Surat Penawaran Ecobliss -->
 <div class="page">
     <!-- Kop Surat -->
     <div class="letterhead">
@@ -357,16 +375,16 @@
     <div class="letter-title">
         <h1>SURAT PENAWARAN</h1>
         <div class="letter-meta">
-            <span>Nomor: 001/JBW/II/2026</span>
-            <span>Tanggal: 05 Februari 2026</span>
+            <span>Nomor: 002/JBW/II/2026</span>
+            <span>Tanggal: 09 Februari 2026</span>
         </div>
     </div>
 
     <!-- Tujuan Surat -->
     <div class="recipient">
         <div class="recipient-label">Yth.</div>
-        <div class="recipient-name">[Nama Client]</div>
-        <div class="recipient-position">[PT Client]</div>
+        <div class="recipient-name">Pak Andry</div>
+        <div class="recipient-position">Ecobliss</div>
         <div class="recipient-address">
             Di tempat
         </div>
@@ -383,7 +401,7 @@
         </div>
 
         <div class="paragraph">
-            Bersama surat ini, kami sampaikan penawaran harga untuk pembuatan website sesuai dengan permintaan Bapak/Ibu. Detail penawaran kami sampaikan pada tabel di bawah ini:
+            Bersama surat ini, kami sampaikan penawaran harga untuk pembuatan PO Logistics Management System sesuai dengan permintaan Bapak/Ibu. Detail penawaran kami sampaikan pada tabel di bawah ini:
         </div>
 
         <!-- Tabel Penawaran -->
@@ -403,48 +421,20 @@
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td>Paket Website Company Profile</td>
+                        <td>PO Logistics Management System</td>
                         <td>
-                            - Halaman: Home, About, Services, Portfolio, Contact<br>
-                            - Responsive Design (Mobile & Desktop)<br>
-                            - SEO Basic<br>
-                            - Integrasi Social Media<br>
-                            - Form Kontak<br>
-                            - Slideshow/Gallery
+                            - Dashboard Admin dengan Analytics<br>
+                            - Manajemen Purchase Order (PO)<br>
+                            - Manajemen Logistik & Kontrak<br>
+                            - Import Data via Excel<br>
+                            - Export Data & Laporan<br>
+                            - User Management & Role<br>
+                            - Responsive Design<br>
+                            - SSL Security
                         </td>
                         <td>1</td>
-                        <td>Rp 5.000.000</td>
-                        <td>Rp 5.000.000</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Domain & Hosting 1 Tahun</td>
-                        <td>
-                            - Domain .com / .co.id<br>
-                            - Hosting 5 GB SSD<br>
-                            - SSL Certificate<br>
-                            - Email Bisnis
-                        </td>
-                        <td>1</td>
-                        <td>Rp 1.500.000</td>
-                        <td>Rp 1.500.000</td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Maintenance 6 Bulan</td>
-                        <td>
-                            - Update konten (max 4x/bulan)<br>
-                            - Backup rutin<br>
-                            - Security monitoring<br>
-                            - Technical support
-                        </td>
-                        <td>1</td>
-                        <td>Rp 1.000.000</td>
-                        <td>Rp 1.000.000</td>
-                    </tr>
-                    <tr class="total-row">
-                        <td colspan="5" style="text-align: right;">TOTAL</td>
-                        <td>Rp 7.500.000</td>
+                        <td>Rp 3.690.000</td>
+                        <td>Rp 3.690.000</td>
                     </tr>
                 </tbody>
             </table>
@@ -452,15 +442,14 @@
 
         <!-- Terbilang -->
         <div class="terbilang">
-            <span class="terbilang-label">Terbilang:</span> Tujuh Juta Lima Ratus Ribu Rupiah
+            <span class="terbilang-label">Terbilang:</span> Tiga Juta Enam Ratus Sembilan Puluh Ribu Rupiah
         </div>
 
         <!-- Keterangan -->
         <div class="notes">
             <div class="notes-title">Keterangan:</div>
             <ul class="notes-list">
-                <li>Harga di atas belum termasuk PPN 11%</li>
-                <li>Harga sudah termasuk domain dan hosting untuk 1 tahun</li>
+                <li>Domain dan hosting ditanggung oleh user/sendiri</li>
                 <li>Harga dapat berubah sesuai dengan fitur tambahan yang diminta</li>
             </ul>
         </div>
@@ -469,13 +458,10 @@
         <div class="terms">
             <div class="terms-title">Syarat dan Ketentuan:</div>
             <ol class="terms-list">
-                <li><strong>Cara Pembayaran:</strong> DP 50% (Rp 3.750.000) diawal dan Pelunasan 50% (Rp 3.750.000) setelah website selesai dan siap publish.<br><br>
-                    <strong>Transfer ke:</strong><br>
-                    Bank: BCA<br>
-                    No. Rekening: 6755381296<br>
-                    Atas Nama: Muhammad Zaki Achsan
+                <li><strong>Cara Pembayaran:</strong> Termin 1: 30% (Rp 1.107.000) diawal, Termin 2: 30% (Rp 1.107.000) pada tengah project, dan Termin 3: 40% (Rp 1.476.000) setelah website selesai dan siap publish.<br>
+                    <strong>Transfer ke:</strong> BCA 6755381296 a.n Muhammad Zaki Achsan
                 </li>
-                <li><strong>Durasi Pengerjaan:</strong> Estimasi 14-21 hari kerja sejak DP diterima dan data lengkap diberikan.</li>
+                <li><strong>Durasi Pengerjaan:</strong> Estimasi 21-30 hari kerja sejak DP diterima dan data lengkap diberikan.</li>
                 <li><strong>Garansi:</strong> 3 bulan gratis maintenance untuk perbaikan bug dan error teknis.</li>
                 <li><strong>Revisi:</strong> 2 kali revisi major selama proses pengerjaan. Revisi minor tidak terbatas.</li>
                 <li><strong>Pembatalan:</strong> Jika project dibatalkan oleh klien setelah DP diterima, DP tidak dapat dikembalikan namun data desain tetap menjadi milik klien.</li>
@@ -496,7 +482,7 @@
         <div class="signature">
             <div class="signature-box">
                 <div class="signature-greeting">Hormat kami,</div>
-                <div class="signature-place">Jakarta, 05 Februari 2026</div>
+                <div class="signature-place">Jakarta, 09 Februari 2026</div>
                 <div style="margin: 40px 0 5px;">
                     <div class="signature-name">ZakiAchsan</div>
                 </div>
