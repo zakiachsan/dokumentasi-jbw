@@ -183,7 +183,9 @@ class ReportGenerator {
     } else {
       urgent.forEach(t => {
         const taskName = (t.namaProject || '').replace(/\n/g, ' ').trim();
-        report += `• [${taskName}]\n  ${t.picQA}, ${this.formatDeadline(t.deadline)}\n\n`;
+        const priorityMap = { 'H': 'High', 'M': 'Medium', 'L': 'Low', 'h': 'High', 'm': 'Medium', 'l': 'Low' };
+        const priority = priorityMap[t.priority] || t.priority || 'Medium';
+        report += `• [${taskName}]\n  PIC: ${t.picQA} | Priority: ${priority} | ${this.formatDeadline(t.deadline)}\n\n`;
       });
     }
 
@@ -197,7 +199,9 @@ class ReportGenerator {
         const taskName = (t.namaProject || '').replace(/\n/g, ' ').trim();
         const deadlineDisplay = this.formatDateDisplay(t.deadline);
         const daysLate = Math.abs(this.getDaysUntilDeadline(t.deadline));
-        report += `• [${taskName}]\n  Deadline: ${deadlineDisplay} (${daysLate} hari lalu)\n\n`;
+        const priorityMap = { 'H': 'High', 'M': 'Medium', 'L': 'Low', 'h': 'High', 'm': 'Medium', 'l': 'Low' };
+        const priority = priorityMap[t.priority] || t.priority || 'Medium';
+        report += `• [${taskName}]\n  PIC: ${t.picQA} | Priority: ${priority} | Deadline: ${deadlineDisplay} (${daysLate} hari lalu)\n\n`;
       });
     }
 
