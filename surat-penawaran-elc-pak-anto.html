@@ -47,22 +47,6 @@
             border-bottom: 3px double #2563eb;
         }
         
-        .logo {
-            width: 80px;
-            height: 80px;
-            background: #2563eb;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-            font-size: 10px;
-            text-align: center;
-            margin-right: 20px;
-            flex-shrink: 0;
-            border-radius: 8px;
-        }
-        
         .company-info {
             flex: 1;
         }
@@ -84,6 +68,12 @@
         .company-address {
             font-size: 10pt;
             line-height: 1.4;
+            color: #333;
+        }
+        
+        .company-contact {
+            font-size: 10pt;
+            margin-top: 5px;
             color: #333;
         }
         
@@ -123,6 +113,10 @@
             margin-bottom: 3px;
         }
         
+        .recipient-position {
+            margin-bottom: 3px;
+        }
+        
         /* Isi Surat */
         .letter-body {
             text-align: justify;
@@ -134,46 +128,67 @@
         
         .paragraph {
             margin-bottom: 15px;
-            text-indent: 40px;
+            text-indent: 30px;
         }
         
         /* Tabel Penawaran */
-        .items-table {
+        .table-container {
+            margin: 20px 0;
+        }
+        
+        .table-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        table {
             width: 100%;
             border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 11pt;
+            font-size: 10pt;
         }
         
-        .items-table th {
-            background: #2563eb;
-            color: white;
-            padding: 10px;
-            text-align: left;
-            border: 1px solid #2563eb;
+        table, th, td {
+            border: 1px solid #000;
         }
         
-        .items-table td {
-            padding: 10px;
-            border: 1px solid #ccc;
+        th {
+            background: #f0f0f0;
+            padding: 8px 5px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 10pt;
+        }
+        
+        td {
+            padding: 8px 5px;
             vertical-align: top;
         }
         
-        .items-table tr:nth-child(even) {
-            background: #f8fafc;
+        td:first-child {
+            text-align: center;
         }
         
         .total-row {
-            background: #2563eb !important;
-            color: white;
             font-weight: bold;
+            background: #f9f9f9;
         }
         
         .total-row td {
-            border-color: #2563eb;
+            padding: 10px 5px;
         }
         
-        /* Terms */
+        /* Terbilang */
+        .terbilang {
+            margin: 15px 0;
+            font-style: italic;
+        }
+        
+        .terbilang-label {
+            font-weight: bold;
+        }
+        
+        /* Syarat dan Ketentuan */
         .terms {
             margin: 20px 0;
         }
@@ -184,36 +199,53 @@
         }
         
         .terms-list {
-            margin-left: 20px;
+            padding-left: 25px;
         }
         
         .terms-list li {
-            margin-bottom: 5px;
+            margin-bottom: 8px;
+            text-align: justify;
         }
         
-        /* Signature */
-        .signature-section {
+        /* Penutup */
+        .closing {
+            margin: 25px 0;
+        }
+        
+        .closing-text {
+            text-indent: 30px;
+            margin-bottom: 10px;
+        }
+        
+        /* Tanda Tangan */
+        .signature {
             margin-top: 40px;
             display: flex;
             justify-content: flex-end;
         }
         
         .signature-box {
-            text-align: center;
             width: 250px;
+            text-align: center;
         }
         
-        .signature-location {
-            margin-bottom: 80px;
+        .signature-greeting {
+            text-align: left;
+            margin-bottom: 10px;
+        }
+        
+        .signature-place {
+            text-align: left;
+            margin-bottom: 60px;
         }
         
         .signature-line {
-            border-top: 1px solid #000;
-            margin-top: 5px;
-            padding-top: 5px;
+            border-bottom: 1px solid #000;
+            margin: 5px auto;
+            width: 200px;
         }
         
-        /* Print Styles */
+        /* Print styles */
         @media print {
             body {
                 background: white;
@@ -222,149 +254,157 @@
             .page {
                 box-shadow: none;
                 margin: 0;
-                padding: 20mm;
-            }
-            
-            .no-print {
-                display: none;
+                width: 100%;
+                height: 100%;
             }
         }
     </style>
 </head>
 <body>
-    <div class="page">
-        <!-- Kop Surat -->
-        <div class="letterhead">
-            <div class="logo">ELC<br>SYSTEM</div>
-            <div class="company-info">
-                <div class="company-name">ELC System</div>
-                <div class="company-tagline">English Learning Center Management System</div>
-                <div class="company-address">
-                    Jl. Boulevard Raya Blok QA5 No. 25<br>
-                    Kelapa Gading, Jakarta Utara 14240<br>
-                    Telp: (021) 4585 1234 | Email: admin@elcenormous1.com
-                </div>
+
+<div class="page">
+    <!-- Kop Surat -->
+    <div class="letterhead">
+        <div class="company-info">
+            <div class="company-name">ELC System</div>
+            <div class="company-tagline">English Learning Center Management System</div>
+            <div class="company-address">
+                Jl. Boulevard Raya Blok QA5 No. 25, Kelapa Gading<br>
+                Jakarta Utara 14240
+            </div>
+            <div class="company-contact">
+                Telepon: (021) 4585 1234 | Email: admin@elcenormous1.com | elcenormous1.com
             </div>
         </div>
+    </div>
 
-        <!-- Judul Surat -->
-        <div class="letter-title">
-            <h1>SURAT PENAWARAN</h1>
-            <div class="letter-meta">
-                <span>No: ELC/SP/III/2025</span>
-                <span>Tanggal: 5 Maret 2025</span>
-            </div>
+    <!-- Judul Surat -->
+    <div class="letter-title">
+        <h1>SURAT PENAWARAN</h1>
+        <div class="letter-meta">
+            <span>Nomor: ELC/SP/III/2025</span>
+            <span>Tanggal: 05 Maret 2025</span>
+        </div>
+    </div>
+
+    <!-- Tujuan Surat -->
+    <div class="recipient">
+        <div class="recipient-label">Yth.</div>
+        <div class="recipient-name">Bapak Anto</div>
+        <div class="recipient-position">Project Manager ELC</div>
+        <div class="recipient-address">
+            Di tempat
+        </div>
+    </div>
+
+    <!-- Isi Surat -->
+    <div class="letter-body">
+        <div class="salutation">
+            Dengan hormat,
         </div>
 
-        <!-- Tujuan Surat -->
-        <div class="recipient">
-            <div class="recipient-label">Kepada Yth.</div>
-            <div class="recipient-name">Bapak Anto</div>
-            <div class="recipient-position">Project Manager ELC</div>
-            <div class="recipient-address">
-                di Tempat
-            </div>
+        <div class="paragraph">
+            Bersama surat ini, kami sampaikan penawaran untuk pengembangan fitur ELC System sesuai dengan permintaan Bapak. Adapun detail penawaran kami sampaikan pada tabel di bawah ini:
         </div>
 
-        <!-- Isi Surat -->
-        <div class="letter-body">
-            <div class="salutation">
-                Dengan hormat,
-            </div>
-
-            <div class="paragraph">
-                Bersama surat ini, kami sampaikan penawaran untuk pengembangan fitur ELC System sesuai dengan permintaan Bapak. Adapun detail penawaran sebagai berikut:
-            </div>
-
-            <!-- Tabel Item -->
-            <table class="items-table">
+        <!-- Tabel Penawaran -->
+        <div class="table-container">
+            <div class="table-title">TABEL PENAWARAN</div>
+            <table>
                 <thead>
                     <tr>
                         <th style="width: 5%;">No</th>
-                        <th style="width: 55%;">Item Pekerjaan</th>
-                        <th style="width: 40%;">Keterangan</th>
+                        <th style="width: 30%;">Nama Pekerjaan</th>
+                        <th style="width: 45%;">Spesifikasi</th>
+                        <th style="width: 20%;">Keterangan</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>1</td>
-                        <td><strong>Rapot Mid Test</strong><br>
-                        Sistem rapot untuk ujian tengah semester dengan tampilan yang berbeda untuk setiap sekolah sesuai kebutuhan masing-masing.</td>
+                        <td>Rapot Mid Test</td>
+                        <td>Sistem rapot untuk ujian tengah semester dengan tampilan yang berbeda untuk setiap sekolah sesuai kebutuhan masing-masing.</td>
                         <td>Custom design per sekolah</td>
                     </tr>
                     <tr>
                         <td>2</td>
-                        <td><strong>Rapot Final Test</strong><br>
-                        Sistem rapot untuk ujian akhir semester dengan format yang berbeda-beda mengikuti kebijakan masing-masing sekolah.</td>
+                        <td>Rapot Final Test</td>
+                        <td>Sistem rapot untuk ujian akhir semester dengan format yang berbeda-beda mengikuti kebijakan masing-masing sekolah.</td>
                         <td>Custom design per sekolah</td>
                     </tr>
                     <tr>
                         <td>3</td>
-                        <td><strong>Redesign Halaman Schedule</strong><br>
-                        Perubahan tampilan dan peningkatan UX/UI pada halaman jadwal kelas untuk memudahkan admin, guru, dan siswa melihat jadwal.</td>
+                        <td>Redesign Halaman Schedule</td>
+                        <td>Perubahan tampilan dan peningkatan UX/UI pada halaman jadwal kelas untuk memudahkan admin, guru, dan siswa melihat jadwal.</td>
                         <td>Full redesign & responsive</td>
                     </tr>
                     <tr>
                         <td>4</td>
-                        <td><strong>E-Certificate CEFR Test</strong><br>
-                        Sertifikat elektronik untuk peserta yang telah mengikuti dan menyelesaikan CEFR Placement Test dengan hasil tertentu.</td>
+                        <td>E-Certificate CEFR Test</td>
+                        <td>Sertifikat elektronik untuk peserta yang telah mengikuti dan menyelesaikan CEFR Placement Test dengan hasil tertentu.</td>
                         <td>PDF generation + preview</td>
                     </tr>
                     <tr>
                         <td>5</td>
-                        <td><strong>Minor Request</strong><br>
-                        Penyesuaian minor lainnya sesuai kebutuhan operasional ELC yang muncul selama proses pengembangan.</td>
-                        <td>On-demand adjustments</td>
+                        <td>Minor Request</td>
+                        <td>Penyesuaian minor lainnya sesuai kebutuhan operasional ELC yang mungkin muncul selama proses pengembangan.</td>
+                        <td>On-demand</td>
                     </tr>
                     <tr class="total-row">
-                        <td colspan="2" style="text-align: right;">TOTAL INVESTASI</td>
-                        <td style="font-size: 14pt;">Rp 2.000.000</td>
+                        <td colspan="3" style="text-align: right;">TOTAL INVESTASI</td>
+                        <td style="font-size: 12pt; text-align: center;">Rp 2.000.000</td>
                     </tr>
                 </tbody>
             </table>
+        </div>
 
-            <!-- Ketentuan -->
-            <div class="terms">
-                <div class="terms-title">Ketentuan:</div>
-                <ol class="terms-list">
-                    <li>Harga di atas adalah <strong>harga final</strong> untuk seluruh pekerjaan.</li>
-                    <li>Pembayaran dilakukan <strong>1x (satu kali)</strong> setelah seluruh pekerjaan selesai dan disetujui.</li>
-                    <li>Waktu pengerjaan estimasi <strong>2-3 minggu</strong> setelah deal.</li>
-                    <li>Revisi minor termasuk dalam harga (maksimal 2x revisi per fitur).</li>
-                    <li>Support bug fix gratis selama 1 bulan setelah handover.</li>
-                </ol>
+        <!-- Terbilang -->
+        <div class="terbilang">
+            <span class="terbilang-label">Terbilang:</span> Dua Juta Rupiah
+        </div>
+
+        <!-- Syarat dan Ketentuan -->
+        <div class="terms">
+            <div class="terms-title">Syarat dan Ketentuan:</div>
+            <ol class="terms-list">
+                <li><strong>Harga:</strong> Harga di atas adalah harga final untuk seluruh pekerjaan yang telah disepakati.</li>
+                <li><strong>Cara Pembayaran:</strong> Pembayaran dilakukan 1x (satu kali) setelah seluruh pekerjaan selesai dan disetujui.<br><br>
+                    <strong>Transfer ke:</strong><br>
+                    Bank: BCA<br>
+                    No. Rekening: 6755381296<br>
+                    Atas Nama: Muhammad Zaki Achsan
+                </li>
+                <li><strong>Durasi Pengerjaan:</strong> Estimasi 2-3 minggu sejak deal dan data lengkap diberikan.</li>
+                <li><strong>Revisi:</strong> Revisi minor termasuk dalam harga (maksimal 2x revisi per fitur).</li>
+                <li><strong>Support:</strong> Bug fix gratis selama 1 bulan setelah handover.</li>
+            </ol>
+        </div>
+
+        <!-- Penutup -->
+        <div class="closing">
+            <div class="closing-text">
+                Demikian penawaran ini kami sampaikan. Besar harapan kami untuk dapat bekerja sama dengan Bapak. Apabila ada hal yang perlu ditanyakan atau diskusikan lebih lanjut, silakan menghubungi kami melalui kontak yang tersedia.
             </div>
-
-            <div class="paragraph">
-                Demikian penawaran ini kami sampaikan. Apabila Bapak berminat, silakan konfirmasi melalui WhatsApp atau email yang tertera. Kami siap membahas lebih detail mengenai spesifikasi teknis dan timeline pengerjaan.
-            </div>
-
-            <div class="paragraph">
-                Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.
+            <div class="closing-text">
+                Atas perhatian dan kesempatan yang diberikan, kami ucapkan terima kasih.
             </div>
         </div>
 
-        <!-- Signature -->
-        <div class="signature-section">
+        <!-- Tanda Tangan -->
+        <div class="signature">
             <div class="signature-box">
-                <div class="signature-location">
-                    Jakarta, 5 Maret 2025
+                <div class="signature-greeting">Hormat kami,</div>
+                <div class="signature-place">Jakarta, 05 Maret 2025</div>
+                <div style="margin: 40px 0 5px;">
+                    <div class="signature-name">Zaki</div>
                 </div>
-                <div class="signature-name">Zaki</div>
-                <div class="signature-line">
-                    <strong>Zaki Achsan</strong><br>
-                    Technical Lead<br>
-                    ELC System
-                </div>
+                <div class="signature-line"></div>
+                <div style="font-weight: bold; margin-bottom: 3px;">Muhammad Zaki Achsan</div>
+                <div>Technical Lead</div>
             </div>
-        </div>
-
-        <!-- Tombol Print -->
-        <div class="no-print" style="margin-top: 30px; text-align: center;">
-            <button onclick="window.print()" style="padding: 10px 30px; background: #2563eb; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12pt;">
-                🖨️ Cetak / Save PDF
-            </button>
         </div>
     </div>
+</div>
+
 </body>
 </html>
