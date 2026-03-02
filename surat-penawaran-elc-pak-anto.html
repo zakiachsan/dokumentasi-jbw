@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surat Penawaran - ELC System</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            font-size: 12pt;
+            line-height: 1.6;
+            color: #000;
+            background: white;
+        }
+        
+        .signature-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 28pt;
+            font-weight: 700;
+            margin-bottom: 3px;
+            color: #000;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 25mm 20mm;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        /* Header / Kop Surat */
+        .letterhead {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px double #2563eb;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 10px;
+            text-align: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            border-radius: 8px;
+        }
+        
+        .company-info {
+            flex: 1;
+        }
+        
+        .company-name {
+            font-size: 22pt;
+            font-weight: bold;
+            color: #2563eb;
+            margin-bottom: 3px;
+        }
+        
+        .company-tagline {
+            font-size: 11pt;
+            color: #666;
+            margin-bottom: 8px;
+            font-style: italic;
+        }
+        
+        .company-address {
+            font-size: 10pt;
+            line-height: 1.4;
+            color: #333;
+        }
+        
+        /* Judul Surat */
+        .letter-title {
+            text-align: center;
+            margin: 30px 0 25px;
+        }
+        
+        .letter-title h1 {
+            font-size: 16pt;
+            font-weight: bold;
+            text-decoration: underline;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+        
+        .letter-meta {
+            font-size: 11pt;
+            display: flex;
+            justify-content: space-between;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        /* Tujuan Surat */
+        .recipient {
+            margin-bottom: 20px;
+        }
+        
+        .recipient-label {
+            margin-bottom: 15px;
+        }
+        
+        .recipient-name {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        /* Isi Surat */
+        .letter-body {
+            text-align: justify;
+        }
+        
+        .salutation {
+            margin-bottom: 15px;
+        }
+        
+        .paragraph {
+            margin-bottom: 15px;
+            text-indent: 40px;
+        }
+        
+        /* Tabel Penawaran */
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 11pt;
+        }
+        
+        .items-table th {
+            background: #2563eb;
+            color: white;
+            padding: 10px;
+            text-align: left;
+            border: 1px solid #2563eb;
+        }
+        
+        .items-table td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            vertical-align: top;
+        }
+        
+        .items-table tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        .total-row {
+            background: #2563eb !important;
+            color: white;
+            font-weight: bold;
+        }
+        
+        .total-row td {
+            border-color: #2563eb;
+        }
+        
+        /* Terms */
+        .terms {
+            margin: 20px 0;
+        }
+        
+        .terms-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        
+        .terms-list {
+            margin-left: 20px;
+        }
+        
+        .terms-list li {
+            margin-bottom: 5px;
+        }
+        
+        /* Signature */
+        .signature-section {
+            margin-top: 40px;
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .signature-box {
+            text-align: center;
+            width: 250px;
+        }
+        
+        .signature-location {
+            margin-bottom: 80px;
+        }
+        
+        .signature-line {
+            border-top: 1px solid #000;
+            margin-top: 5px;
+            padding-top: 5px;
+        }
+        
+        /* Print Styles */
+        @media print {
+            body {
+                background: white;
+            }
+            
+            .page {
+                box-shadow: none;
+                margin: 0;
+                padding: 20mm;
+            }
+            
+            .no-print {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <!-- Kop Surat -->
+        <div class="letterhead">
+            <div class="logo">ELC<br>SYSTEM</div>
+            <div class="company-info">
+                <div class="company-name">ELC System</div>
+                <div class="company-tagline">English Learning Center Management System</div>
+                <div class="company-address">
+                    Jl. Boulevard Raya Blok QA5 No. 25<br>
+                    Kelapa Gading, Jakarta Utara 14240<br>
+                    Telp: (021) 4585 1234 | Email: admin@elcenormous1.com
+                </div>
+            </div>
+        </div>
+
+        <!-- Judul Surat -->
+        <div class="letter-title">
+            <h1>SURAT PENAWARAN</h1>
+            <div class="letter-meta">
+                <span>No: ELC/SP/III/2025</span>
+                <span>Tanggal: 5 Maret 2025</span>
+            </div>
+        </div>
+
+        <!-- Tujuan Surat -->
+        <div class="recipient">
+            <div class="recipient-label">Kepada Yth.</div>
+            <div class="recipient-name">Bapak Anto</div>
+            <div class="recipient-position">Project Manager ELC</div>
+            <div class="recipient-address">
+                di Tempat
+            </div>
+        </div>
+
+        <!-- Isi Surat -->
+        <div class="letter-body">
+            <div class="salutation">
+                Dengan hormat,
+            </div>
+
+            <div class="paragraph">
+                Bersama surat ini, kami sampaikan penawaran untuk pengembangan fitur ELC System sesuai dengan permintaan Bapak. Adapun detail penawaran sebagai berikut:
+            </div>
+
+            <!-- Tabel Item -->
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th style="width: 5%;">No</th>
+                        <th style="width: 55%;">Item Pekerjaan</th>
+                        <th style="width: 40%;">Keterangan</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td><strong>Rapot Mid Test</strong><br>
+                        Sistem rapot untuk ujian tengah semester dengan tampilan yang berbeda untuk setiap sekolah sesuai kebutuhan masing-masing.</td>
+                        <td>Custom design per sekolah</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td><strong>Rapot Final Test</strong><br>
+                        Sistem rapot untuk ujian akhir semester dengan format yang berbeda-beda mengikuti kebijakan masing-masing sekolah.</td>
+                        <td>Custom design per sekolah</td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td><strong>Redesign Halaman Schedule</strong><br>
+                        Perubahan tampilan dan peningkatan UX/UI pada halaman jadwal kelas untuk memudahkan admin, guru, dan siswa melihat jadwal.</td>
+                        <td>Full redesign & responsive</td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td><strong>E-Certificate CEFR Test</strong><br>
+                        Sertifikat elektronik untuk peserta yang telah mengikuti dan menyelesaikan CEFR Placement Test dengan hasil tertentu.</td>
+                        <td>PDF generation + preview</td>
+                    </tr>
+                    <tr>
+                        <td>5</td>
+                        <td><strong>Minor Request</strong><br>
+                        Penyesuaian minor lainnya sesuai kebutuhan operasional ELC yang muncul selama proses pengembangan.</td>
+                        <td>On-demand adjustments</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td colspan="2" style="text-align: right;">TOTAL INVESTASI</td>
+                        <td style="font-size: 14pt;">Rp 2.000.000</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Ketentuan -->
+            <div class="terms">
+                <div class="terms-title">Ketentuan:</div>
+                <ol class="terms-list">
+                    <li>Harga di atas adalah <strong>harga final</strong> untuk seluruh pekerjaan.</li>
+                    <li>Pembayaran dilakukan <strong>1x (satu kali)</strong> setelah seluruh pekerjaan selesai dan disetujui.</li>
+                    <li>Waktu pengerjaan estimasi <strong>2-3 minggu</strong> setelah deal.</li>
+                    <li>Revisi minor termasuk dalam harga (maksimal 2x revisi per fitur).</li>
+                    <li>Support bug fix gratis selama 1 bulan setelah handover.</li>
+                </ol>
+            </div>
+
+            <div class="paragraph">
+                Demikian penawaran ini kami sampaikan. Apabila Bapak berminat, silakan konfirmasi melalui WhatsApp atau email yang tertera. Kami siap membahas lebih detail mengenai spesifikasi teknis dan timeline pengerjaan.
+            </div>
+
+            <div class="paragraph">
+                Atas perhatian dan kerjasamanya, kami ucapkan terima kasih.
+            </div>
+        </div>
+
+        <!-- Signature -->
+        <div class="signature-section">
+            <div class="signature-box">
+                <div class="signature-location">
+                    Jakarta, 5 Maret 2025
+                </div>
+                <div class="signature-name">Zaki</div>
+                <div class="signature-line">
+                    <strong>Zaki Achsan</strong><br>
+                    Technical Lead<br>
+                    ELC System
+                </div>
+            </div>
+        </div>
+
+        <!-- Tombol Print -->
+        <div class="no-print" style="margin-top: 30px; text-align: center;">
+            <button onclick="window.print()" style="padding: 10px 30px; background: #2563eb; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 12pt;">
+                🖨️ Cetak / Save PDF
+            </button>
+        </div>
+    </div>
+</body>
+</html>
